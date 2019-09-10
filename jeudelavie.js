@@ -1,3 +1,5 @@
+// Code non terminé //
+
 "use strict"
 
 const map = [
@@ -79,21 +81,21 @@ function controlBotLane(x, y) {
 function lookingForChangeState(celresult, x, y) {
   if (map[x][y]) {
     if(celresult == 2 || celresult == 3) {
-      map[x][y] == true // A LA PROCHAINE GENERATION MAIS COMMENT DIRE CA ? 
+      map[x][y] == true // A LA PROCHAINE GENERATION??
       console.log("vrai stay vrai")
     }
-    else {map[x][y] == false // A LA PROCHAINE GENERATION MAIS COMMENT DIRE CA ?
+    else {map[x][y] == false // A LA PROCHAINE GENERATION??
       console.log("vrai stay vrai")} 
   } 
   else {
     if (celresult == 3) {
-      map[x][y] == true // A LA PROCHAINE GENERATION MAIS COMMENT DIRE CA ? 
+      map[x][y] == true // A LA PROCHAINE GENERATION??
       console.log("faux deviens vrai")
     } 
     else { map[x][y] == false 
       console.log("faux reste faux")
 
-    } // A LA PROCHAINE GENERATION MAIS COMMENT DIRE CA ?
+    } 
   }
 
 }
