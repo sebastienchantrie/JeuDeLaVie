@@ -2,107 +2,94 @@
 
 "use strict"
 
-const map = [
-  [false, true, false, false, false],
+let map = [
+  [false, true, false, false, false, false],
   [false, false, true, false, false],
   [false, true, true, true, false],
-  [false, false, true, false, false],
+  [false, false, true, false, false, true],
   [false, false, false, false, false],
 ];
+let map2;
 
-//setInterval(
+setInterval(
 function gameLogic() {
-  let x = 0;
-  let y = 0;
-  while (x < map.length) {
-    y++;
-    const celresult = controlAround(x, y);
-    lookingForChangeState(celresult);
-    if (y >= map.length) {
-      y = 0;
-      x++;
-    }
-    console.log(x, y)
+  map2 = [];
+  for ( let x = 0 ; x < map.length ; x++) {
+    map2.push(map[x].slice());
   }
-}
-//300);
-gameLogic();
-/*
-
-// Add dans prochain tableau 1 dimension
-for ( let x = 0 ; x < map.length ; x++) {
-  map2.push(map[x].slice());
-}
-
-// Définir map ronde
-
-if (y-1 < 0) y = 4
-if (y > 4) y = 0
-
-
-// On regarde dans le vrai tableau l'état de la case
-// On inscrit son prochain état dans l'autre tableau
-// a la fin, on remplace la copie par le vrai tableau
-
-*/
+  let x = 0;
+  while (x < map.length) {
+    let y = 0;
+    while (y < map[x].length) {
+      const celresult = controlAround(x, y);
+      lookingForChangeState(x, y, celresult);
+      y++;
+    }
+    x++;
+  }
+  map = map2;
+  console.log(map);
+},1000);
 
 function controlAround(x, y) {
   let celresult = 0;
   celresult += controlTopLane(x, y);
   celresult += controlMidLane(x, y);
   celresult += controlBotLane(x, y);
-  console.log(celresult)
+  //console.log(celresult)
   return(celresult);
 }
-  
+
+
 function controlTopLane(x, y) {
   let cel = 0;
-  if (map[x - 1][y - 1]) cel++;
-  if (map[x - 1][y]) cel++;
-  if (map[x - 1][y + 1]) cel++;
-  console.log("top:" + cel);
+  cel += controlCellule(x - 1, y - 1);
+  cel += controlCellule(x - 1, y);
+  cel += controlCellule(x - 1, y + 1);
+  //console.log("top:" + cel);
   return(cel);
 }
 
-
 function controlMidLane(x, y) {
   let cel = 0;
-  if (map[x][y - 1]) cel++;
-  if (map[x][y + 1]) cel++;
-  console.log("mid:" + cel);
+  cel += controlCellule(x, y - 1);
+  cel += controlCellule(x, y + 1);
+  //console.log("mid:" + cel);
   return(cel);
 }
 
 function controlBotLane(x, y) {
     let cel = 0;
-    if (map[x + 1][y - 1]) cel++;
-    if (map[x + 1][y]) cel++;
-    if (map[x + 1][y + 1]) cel++;
-    console.log("bot:" + cel);
+    cel += controlCellule(x + 1, y - 1);
+    cel += controlCellule(x + 1, y);
+    cel += controlCellule(x + 1, y + 1);
+    //console.log("bot:" + cel);
     return(cel);
 }
 
-function lookingForChangeState(celresult, x, y) {
-  if (map[x][y]) {
-    if(celresult == 2 || celresult == 3) {
-      map[x][y] == true 
-      console.log("vrai stay vrai")
-    }
-    else {map[x][y] == false 
-      console.log("vrai deviens faux")} 
-  } 
-  else {
-    if (celresult == 3) {
-      map[x][y] == true
-      console.log("faux deviens vrai")
-    } 
-    else { map[x][y] == false 
-      console.log("faux reste faux")
-    } 
-  }
+function controlCellule(x, y) {
+  if (x < 0) x = map.length - 1;
+  else if (x >= map.length) x = 0;
+  if (y < 0) y = map[x].length - 1;
+  else if (y >= map[x].length) y = 0;
 
+  if (map[x][y]) return (1)
+  return (0);
 }
-  const debug = true;
+
+function lookingForChangeState(x, y, celresult) {
+
+  if (map[x][y]) {
+    if (celresult == 2 || celresult == 3) map2[x][y] = true;
+    else map2[x][y] = false;
+  }
+  else {
+    if (celresult == 3) map2[x][y] = true;
+    else map2[x][y] = false;
+  }
+}
+
+
 
 
 
