@@ -10,30 +10,14 @@ const map = [
   [false, false, false, false, false],
 ];
 
-/*
-if (y-1 < 0) y = 4
-if (y > 4) y=0
-*/
-
 //setInterval(
-  
-  function launchGameOfLife() {
-  let x = 3;
-  let y = 3;
-  console.log(map[x][y])
-  let celresult = 0;
-  //selectCase(x, y);
-  celresult += controlAround(x, y);
-  lookingForChangeState(celresult, x, y)
-}
-launchGameOfLife(); 
-//300);
-/*
-function selectCase(x, y) {
+function gameLogic() {
+  let x = 0;
+  let y = 0;
   while (x < map.length) {
     y++;
-    //controlAround(x, y);
-    //lookingForChangeState();
+    const celresult = controlAround(x, y);
+    lookingForChangeState(celresult);
     if (y >= map.length) {
       y = 0;
       x++;
@@ -41,7 +25,27 @@ function selectCase(x, y) {
     console.log(x, y)
   }
 }
+//300);
+gameLogic();
+/*
+
+// Add dans prochain tableau 1 dimension
+for ( let x = 0 ; x < map.length ; x++) {
+  map2.push(map[x].slice());
+}
+
+// Définir map ronde
+
+if (y-1 < 0) y = 4
+if (y > 4) y = 0
+
+
+// On regarde dans le vrai tableau l'état de la case
+// On inscrit son prochain état dans l'autre tableau
+// a la fin, on remplace la copie par le vrai tableau
+
 */
+
 function controlAround(x, y) {
   let celresult = 0;
   celresult += controlTopLane(x, y);
@@ -81,20 +85,19 @@ function controlBotLane(x, y) {
 function lookingForChangeState(celresult, x, y) {
   if (map[x][y]) {
     if(celresult == 2 || celresult == 3) {
-      map[x][y] == true // A LA PROCHAINE GENERATION??
+      map[x][y] == true 
       console.log("vrai stay vrai")
     }
-    else {map[x][y] == false // A LA PROCHAINE GENERATION??
-      console.log("vrai stay vrai")} 
+    else {map[x][y] == false 
+      console.log("vrai deviens faux")} 
   } 
   else {
     if (celresult == 3) {
-      map[x][y] == true // A LA PROCHAINE GENERATION??
+      map[x][y] == true
       console.log("faux deviens vrai")
     } 
     else { map[x][y] == false 
       console.log("faux reste faux")
-
     } 
   }
 
