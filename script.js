@@ -12,6 +12,11 @@ function generate_table() {
         let row = document.createElement("tr");
         for (let j = 0; j < nbtab; j++) {
             let cell = document.createElement("td");
+            cell.classList.add('false')
+            cell.addEventListener('click' , (e) => {
+                if (cell.classList[0] == "false") cell.classList.replace("false", "true")
+                else cell.classList.replace("true", "false")
+            });
 
             if (nbtab === 32) {
                 cell.classList.add('mini');
@@ -27,15 +32,11 @@ function generate_table() {
                 body.classList.add('col-lg-8');
                 body.classList.add('bigmargin');
             }
+
             row.appendChild(cell);
         }
         tblBody.appendChild(row);
-        let td = document.getElementsByTagName('td');
-        for (let n = 0 ; n < td.length ; n++) {
-            td[n].addEventListener('click' , (e) => {
-                td[n].style.backgroundColor = "black";
-            })
-        }
+        
         let move = document.getElementById('move');
         move.classList.add('move');
         tbl.appendChild(tblBody);
@@ -44,3 +45,9 @@ function generate_table() {
     }
 }
     // rester appuyer sur la souris et modifier
+    // A mettre au debut
+//var t0 = performance.now();
+
+// A mettre à la fin
+//var t1 = performance.now();
+//console.log((t1 - t0) + "ms");

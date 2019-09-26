@@ -39,7 +39,6 @@ function controlAround(x, y) {
   return(celresult);
 }
 
-
 function controlTopLane(x, y) {
   let cel = 0;
   cel += controlCellule(x - 1, y - 1);
