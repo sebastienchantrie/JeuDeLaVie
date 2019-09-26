@@ -8,8 +8,7 @@ function generate_table() {
     else if (document.getElementById('64').checked) nbtab = 64; 
     else nbtab = 128;
 
-        
-    for (let i = 0; i < nbtab; i++) { 
+    for (let i = 0; i < nbtab; i++) {
         let row = document.createElement("tr");
     for (let j = 0; j < nbtab; j++) {
         let cell = document.createElement("td");
@@ -17,7 +16,8 @@ function generate_table() {
             cell.classList.add('mini');
             body.classList.add('col-lg-8');
             body.classList.add('littlemargin');
-        } else if (nbtab === 64) {
+        } 
+        else if (nbtab === 64) {
             cell.classList.add('middle');
             body.classList.add('col-lg-6');
             body.classList.add('middlemargin');
