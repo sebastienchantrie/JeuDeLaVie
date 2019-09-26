@@ -10,31 +10,31 @@ function generate_table() {
 
     for (let i = 0; i < nbtab; i++) {
         let row = document.createElement("tr");
-    for (let j = 0; j < nbtab; j++) {
-        let cell = document.createElement("td");
-        if (nbtab === 32) {
-            cell.classList.add('mini');
-            body.classList.add('col-lg-8');
-            body.classList.add('littlemargin');
-        } 
-        else if (nbtab === 64) {
-            cell.classList.add('middle');
-            body.classList.add('col-lg-6');
-            body.classList.add('middlemargin');
-        } else {
-            cell.classList.add("big");
-            body.classList.add('col-lg-8');
-            body.classList.add('bigmargin');
-        }
+        for (let j = 0; j < nbtab; j++) {
+            let cell = document.createElement("td");
+            if (nbtab === 32) {
+                cell.classList.add('mini');
+                body.classList.add('col-lg-8');
+                body.classList.add('littlemargin');
+            } 
+            else if (nbtab === 64) {
+                cell.classList.add('middle');
+                body.classList.add('col-lg-6');
+                body.classList.add('middlemargin');
+            } else {
+                cell.classList.add("big");
+                body.classList.add('col-lg-8');
+                body.classList.add('bigmargin');
+            }
         row.appendChild(cell);
-    }
-    tblBody.appendChild(row);
-    let td = document.getElementsByTagName('td');
-    for (let n = 0 ; n < td.length ; n++) {
-        td[n].addEventListener('click' , (e) => {
-            td[n].style.backgroundColor = "black";
-        })
-    }
+        }
+        tblBody.appendChild(row);
+        let td = document.getElementsByTagName('td');
+        for (let n = 0 ; n < td.length ; n++) {
+            td[n].addEventListener('click' , (e) => {
+                td[n].style.backgroundColor = "black";
+            })
+        }
     let move = document.getElementById('move');
     move.classList.add('move');
     tbl.appendChild(tblBody);
