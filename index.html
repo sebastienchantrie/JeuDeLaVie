@@ -1,73 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Turret+Road&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Le jeu de la vie</title>
 </head>
+
 <body>
     <section class="accueil" id='move'>
-            <h1>Game of Life</h1>
-            <div class="continput">
-                    <ul>
-                        <li>
-                            <input checked type="radio" name="value" id="32">
-                            <label class="textlabel">32x32</label>
-                            <div class="bullet">
-                                <div class="line zero"></div>
-                                <div class="line one"></div>
-                                <div class="line two"></div>
-                                <div class="line three"></div>
-                                <div class="line four"></div>
-                                <div class="line five"></div>
-                                <div class="line six"></div>
-                                <div class="line seven"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <input type="radio" name="value" id="64">
-                            <label class="textlabel">64x64</label>
-                            <div class="bullet">
-                                <div class="line zero"></div>
-                                <div class="line one"></div>
-                                <div class="line two"></div>
-                                <div class="line three"></div>
-                                <div class="line four"></div>
-                                <div class="line five"></div>
-                                <div class="line six"></div>
-                                <div class="line seven"></div>
-                            </div>
-                        </li>
-                        <li>
-                            <input type="radio" name="value" id="128">
-                            <label class="textlabel">128x128</label>
-                            <div class="bullet">
-                                <div class="line zero"></div>
-                                <div class="line one"></div>
-                                <div class="line two"></div>
-                                <div class="line three"></div>
-                                <div class="line four"></div>
-                                <div class="line five"></div>
-                                <div class="line six"></div>
-                                <div class="line seven"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+        <h1>Game of Life</h1>
+        <div class="continput">
+            <ul>
+                <li>
+                    <input checked type="radio" name="value" id="32">
+                    <label class="textlabel">32x32</label>
+                    <div class="bullet">
+                        <div class="line zero"></div>
+                        <div class="line one"></div>
+                        <div class="line two"></div>
+                        <div class="line three"></div>
+                        <div class="line four"></div>
+                        <div class="line five"></div>
+                        <div class="line six"></div>
+                        <div class="line seven"></div>
+                    </div>
+                </li>
+                <li>
+                    <input type="radio" name="value" id="64">
+                    <label class="textlabel">64x64</label>
+                    <div class="bullet">
+                        <div class="line zero"></div>
+                        <div class="line one"></div>
+                        <div class="line two"></div>
+                        <div class="line three"></div>
+                        <div class="line four"></div>
+                        <div class="line five"></div>
+                        <div class="line six"></div>
+                        <div class="line seven"></div>
+                    </div>
+                </li>
+                <li>
+                    <input type="radio" name="value" id="128">
+                    <label class="textlabel">128x128</label>
+                    <div class="bullet">
+                        <div class="line zero"></div>
+                        <div class="line one"></div>
+                        <div class="line two"></div>
+                        <div class="line three"></div>
+                        <div class="line four"></div>
+                        <div class="line five"></div>
+                        <div class="line six"></div>
+                        <div class="line seven"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
         <button class="btn-cool" onclick="generate_table()">Next</button>
     </section>
 
     <div class="container-fluid">
         <div class="row">
-                <section class="col-lg-2 menu">
-                        <button class="btnplay btn-cool">Play</button>
-                        <p class="nbgen">Nombre de generation :</p>
-                        <button class="btnpause btn-cool">Pause</button>
-                        </section>
+            <section class="col-lg-2 menu">
+                <button class="btnplay btn-cool">Play</button>
+                <p class="nbgen">Nombre de generation :</p>
+                <button class="btnpause btn-cool">Pause</button>
+            </section>
             <section id="gameoflife">
             </section>
         </div>
@@ -75,4 +78,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
