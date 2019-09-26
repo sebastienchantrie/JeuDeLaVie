@@ -1,4 +1,4 @@
-// Code en améliration //
+// Code en amélioration //
 
 "use strict"
 
