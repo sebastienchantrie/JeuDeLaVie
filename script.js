@@ -1,3 +1,4 @@
+/*  coherence syntax (let map...), nouvelle pratique (map sur array) */
 let nbtab;
 let btnclick = document.getElementById('createtab');
 let btnread = document.getElementById('btnread');
@@ -13,9 +14,9 @@ let logicgame;
 let isClicked;
 let rulesbtn = document.getElementById('btnrules');
 let btnback = document.getElementById('btnback');
-canClick = true;
+let canClick = true;
 let rules = document.getElementById('rules')
-/* Enlevez parenthese , coherence syntax , nouvelle pratique */
+
 btnclick.addEventListener("click", () => {
   let tbl = document.createElement("table");
   let tblBody = document.createElement("tbody");
@@ -58,13 +59,17 @@ btnclick.addEventListener("click", () => {
             mousedown = true;
             console.log(mousedown);
           }
+        }
           cell.onmouseover = () => {
-            if(mousedown == true) {
+          if (canClick) {
+            if(mousedown) {
               if (cell.classList[0] == "false") cell.classList.replace("false", "true");
               else cell.classList.replace("true", "false");
             };
           }
-          bodytab.onmouseup = () => {
+        }
+        bodytab.onmouseup = () => {
+          if (canClick) {
             mousedown = false;
             console.log(mousedown);
           };
@@ -106,6 +111,7 @@ function createtab(mylogictab) {
   return mylogictab;
 }
 isClicked = false;
+
 btnread.addEventListener('click' , () => {
   canClick = false;
   /* On stock le résultat de la fonction createtab dans une variable */
@@ -140,6 +146,7 @@ btnread.addEventListener('click' , () => {
     isClicked = true;
   }
 });
+
 function controlAround(x, y) {
   let celresult = 0;
   celresult += controlTopLane(x, y);
@@ -147,6 +154,7 @@ function controlAround(x, y) {
   celresult += controlBotLane(x, y);
   return celresult;
 }
+
 function controlTopLane(x, y) {
   let cel = 0;
   cel += controlCellule(x - 1, y - 1);
@@ -154,12 +162,14 @@ function controlTopLane(x, y) {
   cel += controlCellule(x - 1, y + 1);
   return cel;
 }
+
 function controlMidLane(x, y) {
   let cel = 0;
   cel += controlCellule(x, y - 1);
   cel += controlCellule(x, y + 1);
   return cel;
 }
+
 function controlBotLane(x, y) {
     let cel = 0;
     cel += controlCellule(x + 1, y - 1);
@@ -167,6 +177,7 @@ function controlBotLane(x, y) {
     cel += controlCellule(x + 1, y + 1);
     return cel;
 }
+
 function controlCellule(x, y) {
   if (x < 0) x = map.length - 1;
   else if (x >= map.length) x = 0;
@@ -175,8 +186,8 @@ function controlCellule(x, y) {
   if (map[x][y]) return 1
   return 0;
 }
-function lookingForChangeState(x, y, celresult) {
 
+function lookingForChangeState(x, y, celresult) {
   if (map[x][y]) {
     if (celresult == 2 || celresult == 3) map2[x][y] = true;
     else map2[x][y] = false;
@@ -199,7 +210,8 @@ function ChangeDisplay (cell) {
       }
     }
   }
-} 
+}
+
 /* Fonction clearinterval / breakgame */
 btnpause.addEventListener("click", (e) => {
     clearInterval(logicgame);
