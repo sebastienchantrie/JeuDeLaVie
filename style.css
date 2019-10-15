@@ -4,80 +4,65 @@
 body {
     margin:0;
     padding:0;
-    width:100%;
-    overflow:hidden;
+	width:100%;
+	overflow:hidden;
 }
 .gamecontent {
     width:480px;
     height:480px;
     border: 1px solid black;
 }
-
 #gameoflife {
     width: 100%;
     height: 100%;
     position:relative;
 }
-
 table {
     margin:0;
     padding:0;
     border-spacing:2px;
 }
-
 td {
     margin:0;
     padding:1.1em;
 }
-
 .mini {
     padding:0.6em;
 }
-
 .middle {
     padding:0.3em;
 }
-
 .big {
     padding:3px;
 }
-
 .menu {
     background-color: black;
     display:flex;
     flex-direction:column;
 }
-
 .titlegame {
     text-align: center;
 }
-
 .nbgen {
     color:white;
     margin-top:1em;
     margin-bottom:1em;  
 }
-
 .btnplay {
     margin-top:2em;
 }
-
 .btnpause {
     margin-bottom:2em;
 }
-
 .littlemargin {
     margin-left:15% !important;
 }
-
 .middlemargin {
     margin-left:18% !important;
 }
-
 .bigmargin {
     margin-left:7% !important;
 }
-
 .accueil {
     position: absolute;
     top: 0;
@@ -87,13 +72,11 @@ td {
     background-color:white;
     z-index:5;
 }
-
 .move {
     -webkit-animation-name:LefttoRight;
     -webkit-animation-duration: 2.5s;
     -webkit-animation-fill-mode: both;
 }
-
 @-webkit-keyframes LefttoRight {
     0%   { left:0;}
     50%  {opacity:0.2}
@@ -102,13 +85,10 @@ td {
         opacity:0;
         }
 }
-
-
-::selection{
+::selection {
 	background:none;
 }
-
-h1{
+h1 {
 	font-weight:100;
 	text-align: center;
 	margin:0;
@@ -117,7 +97,7 @@ h1{
 	margin-top:1.5em !important;
 	letter-spacing:0.7em;
 }
-h4{
+h4 {
 	font-weight:400;
 	text-align: center;
 	margin:0;
@@ -136,13 +116,11 @@ h4{
 	padding: 16px;
 	box-sizing: border-box;
 }
-
 ul{
 	list-style-type: none;
 	width: 220px;
 	margin: auto;
 }
-
 li {
 	position: relative;
 	padding: 10px;
@@ -150,7 +128,6 @@ li {
     height:30px;
     margin-top:1em;
 }
-
 label:before {
     content: "";
     width: 15px;
@@ -163,7 +140,6 @@ label:before {
     border-radius: 50%;
     display:none;
 }
-
 input[type="radio"] {
 	opacity: 0;
 	-webkit-appearance: none;
@@ -179,7 +155,6 @@ input[type="radio"] {
 	top: calc(50% - 15px);
 	cursor: pointer;
 }
-
 .bullet {
     position: relative;
     width: 25px;
@@ -190,7 +165,6 @@ input[type="radio"] {
     opacity: 0;
     border-radius: 50%;
 }
-
 input[type="radio"]:checked ~ .bullet {
 	position:absolute;
 	opacity: 1;
@@ -200,12 +174,10 @@ input[type="radio"]:checked ~ .bullet {
     left:1%;
     background-color:rgb(0, 0, 0);
 }
-
 .textlabel {
     position:absolute;
     top:-7px;
 }
-
 .line {
 	position: absolute;
 	width: 10px;
@@ -213,7 +185,6 @@ input[type="radio"]:checked ~ .bullet {
 	background-color: rgb(0, 0, 0);
 	opacity:0;
 }
-
 .line.zero {
 	left: 11px;
 	top: -21px;
@@ -221,43 +192,36 @@ input[type="radio"]:checked ~ .bullet {
 	width: 2px;
 	height: 10px;
 }
-
 .line.one {
 	right: -7px;
 	top: -11px;
 	transform: rotate(-55deg) translate(-9px);
 }
-
 .line.two {
 	right: -20px;
 	top: 11px;
 	transform: translate(-9px);
 }
-
 .line.three {
 	right: -8px;
 	top: 35px;
 	transform: rotate(55deg) translate(-9px);
 }
-
 .line.four {
 	left: -8px;
 	top: -11px;
 	transform: rotate(55deg) translate(9px);
 }
-
 .line.five {
 	left: -20px;
 	top: 11px;
 	transform: translate(9px);
 }
-
 .line.six {
 	left: -8px;
 	top: 35px;
 	transform: rotate(-55deg) translate(9px);
 }
-
 .line.seven {
 	left: 11px;
 	bottom: -21px;
@@ -265,67 +229,57 @@ input[type="radio"]:checked ~ .bullet {
 	width: 2px;
 	height: 10px;
 }
-
 input[type="radio"]:checked ~ .bullet .line.zero{
 	animation-name:drop-zero;
 	animation-delay: 0.100s;
 	animation-duration: 0.9s;
 	animation-fill-mode: forwards;
 }
-
 input[type="radio"]:checked ~ .bullet .line.one{
 	animation-name:drop-one;
 	animation-delay: 0.100s;
 	animation-duration: 0.9s;
 	animation-fill-mode: forwards;
 }
-
 input[type="radio"]:checked ~ .bullet .line.two{
 	animation-name:drop-two;
 	animation-delay: 0.100s;
 	animation-duration: 0.9s;
 	animation-fill-mode: forwards;
 }
-
 input[type="radio"]:checked ~ .bullet .line.three{
 	animation-name:drop-three;
 	animation-delay: 0.100s;
 	animation-duration: 0.9s;
 	animation-fill-mode: forwards;
 }
-
 input[type="radio"]:checked ~ .bullet .line.four{
 	animation-name:drop-four;
 	animation-delay: 0.100s;
 	animation-duration: 0.9s;
 	animation-fill-mode: forwards;
 }
-
 input[type="radio"]:checked ~ .bullet .line.five{
 	animation-name:drop-five;
 	animation-delay: 0.100s;
 	animation-duration: 0.9s;
 	animation-fill-mode: forwards;
 }
-
 input[type="radio"]:checked ~ .bullet .line.six{
 	animation-name:drop-six;
 	animation-delay: 0.100s;
 	animation-duration: 0.9s;
 	animation-fill-mode: forwards;
 }
-
 input[type="radio"]:checked ~ .bullet .line.seven{
 	animation-name:drop-seven;
 	animation-delay: 0.100s;
 	animation-duration: 0.9s;
 	animation-fill-mode: forwards;
 }
-
 .textlabel {
     font-size:25px;
 }
-
 @keyframes explode {
 	0%{
 		opacity: 0;
@@ -340,7 +294,6 @@ input[type="radio"]:checked ~ .bullet .line.seven{
 		transform: scale(1);
 	}
 }
-
 @keyframes drop-zero {
 	0% {
 		opacity: 0;
@@ -356,7 +309,6 @@ input[type="radio"]:checked ~ .bullet .line.seven{
 		opacity:0;
 	}
 }
-
 @keyframes drop-one {
 	0% {
 		opacity: 0;
@@ -372,7 +324,6 @@ input[type="radio"]:checked ~ .bullet .line.seven{
 		opacity:0;
 	}
 }
-
 @keyframes drop-two {
 	0% {
 		opacity: 0;
@@ -388,7 +339,6 @@ input[type="radio"]:checked ~ .bullet .line.seven{
 		opacity:0;
 	}
 }
-
 @keyframes drop-three {
 	0% {
 		opacity: 0;
@@ -404,7 +354,6 @@ input[type="radio"]:checked ~ .bullet .line.seven{
 		opacity:0;
 	}
 }
-
 @keyframes drop-four {
 	0% {
 		opacity: 0;
@@ -420,7 +369,6 @@ input[type="radio"]:checked ~ .bullet .line.seven{
 		opacity:0;
 	}
 }
-
 @keyframes drop-five {
 	0% {
 		opacity: 0;
@@ -436,7 +384,6 @@ input[type="radio"]:checked ~ .bullet .line.seven{
 		opacity:0;
 	}
 }
-
 @keyframes drop-six {
 	0% {
 		opacity: 0;
@@ -452,7 +399,6 @@ input[type="radio"]:checked ~ .bullet .line.seven{
 		opacity:0;
 	}
 }
-
 @keyframes drop-seven {
 0% {
 		opacity: 0;
@@ -468,7 +414,6 @@ input[type="radio"]:checked ~ .bullet .line.seven{
 		opacity:0;
 	}
 }
-
 .btn-cool {
     position: relative;
     display: block;
@@ -483,13 +428,11 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     transition:0.5s;
     width:40%;
 }
-
 .btn-cool:hover {
     background: white;
     color:black;
     text-decoration: none;
 }
-
 .btn-cool:before {
     content:"";
     position: absolute;
@@ -501,17 +444,14 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     z-index: -1;
     transition: transform 0.5s ease-in-out;
 }
-
 .btn-cool:before {
     transform-origin: right;
     transform: scaleX(0);
 }
-
 .btn-cool:hover:before {
     transform-origin: left; 
     transform: scaleX(1);
 }
-
 .btn-cool:after {
     content: "";
     position: absolute;
@@ -524,7 +464,6 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     z-index: -1;
     transition:0.5s;
 }
-
 .btn-cool:after {
     content:"";
     position: absolute;
@@ -543,10 +482,26 @@ input[type="radio"]:checked ~ .bullet .line.seven{
     left:28px;
     right: 8px;;
 }
-
 .true {
 	background-color: black;
 }
 .false {
 	background-color: white;
+}
+.rules {
+	position:absolute;
+	top:0;
+	opacity:0;
+	width:100%;
+	height:100%;
+	z-index:-5;
+	background-color:black;
+	color:white;
+}
+.rulestxt {
+	font-size:30px;
+}
+.btnback {
+	position:absolute;
+	top:26%;
 }

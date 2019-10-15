@@ -4,14 +4,19 @@ let btnread = document.getElementById('btnread');
 let btnpause = document.getElementById('btnpause');
 let mylogictab = [];
 let map = [];
-let cell;
 let comptaffiche = document.getElementById('nbgen');
 let compt = 0 ;
-
+let bodytab = document.getElementById('gameoflife');
+let mousedown = false;
+let cell;
+let logicgame;
+let isClicked;
+let rulesbtn = document.getElementById('btnrules');
+let btnback = document.getElementById('btnback');
+canClick = true;
+let rules = document.getElementById('rules')
 /* Enlevez parenthese , coherence syntax , nouvelle pratique */
-
 btnclick.addEventListener("click", () => {
-  let body = document.getElementById('gameoflife');
   let tbl = document.createElement("table");
   let tblBody = document.createElement("tbody");
   if (document.getElementById('32').checked) nbtab = 32;
@@ -25,39 +30,73 @@ btnclick.addEventListener("click", () => {
       cell.id = `cell-${i}-${j}`
       if (nbtab === 32) {
         cell.classList.add('mini');
-        body.classList.add('col-lg-8');
-        body.classList.add('littlemargin');
+        bodytab.classList.add('col-lg-8');
+        bodytab.classList.add('littlemargin');
       }
       else if (nbtab === 64) {
         cell.classList.add('middle');
-        body.classList.add('col-lg-6');
-        body.classList.add('middlemargin');
+        bodytab.classList.add('col-lg-6');
+        bodytab.classList.add('middlemargin');
       } else {
         cell.classList.add("big");
-        body.classList.add('col-lg-8');
-        body.classList.add('bigmargin');
+        bodytab.classList.add('col-lg-8');
+        bodytab.classList.add('bigmargin');
       }
       row.appendChild(cell);
-      /* Fonction au click sur la céllule la rends false ou true */
-      cell.addEventListener('click' , (e) => {
-        if (cell.classList[0] == "false") cell.classList.replace("false", "true");
-        else cell.classList.replace("true", "false");
-        });
+
+      /* Fonction au click sur la céllule la rends false ou true */ 
+      cell.addEventListener('click', (e) => {
+        if (canClick) {
+          if (cell.classList[0] == "false") cell.classList.replace("false", "true");
+          else cell.classList.replace("true", "false");
+        }
+      })
+      /* Fonction qui permet de rester appuyer sur la souris pour changer l'état des cases */
+      document.addEventListener('mousedown', (e) => {
+        if (canClick) {
+          bodytab.onmousedown = () => {
+            mousedown = true;
+            console.log(mousedown);
+          }
+          cell.onmouseover = () => {
+            if(mousedown == true) {
+              if (cell.classList[0] == "false") cell.classList.replace("false", "true");
+              else cell.classList.replace("true", "false");
+            };
+          }
+          bodytab.onmouseup = () => {
+            mousedown = false;
+            console.log(mousedown);
+          };
+        }
+      });
     }
   tblBody.appendChild(row);
   let move = document.getElementById('move');
   move.classList.add('move');
   tbl.appendChild(tblBody);
-  body.appendChild(tbl);
+  bodytab.appendChild(tbl);
   tbl.setAttribute("border", "2");
   }
 });
+
+btnrules.addEventListener('click', () => {
+rules.style.opacity = '1';
+rules.style.zIndex = '5';
+})
+
+
+btnback.addEventListener('click' , () => {
+  rules.style.opacity = '0';
+  rules.style.zIndex = '-5';
+})
+
 /* Crée un tableau multi dimensionnel du meme nombre de case que le tableau HTML et le remplis de false */
 function createtab(mylogictab) {
   if (document.getElementById('32').checked) nbtab = 32;
   else if (document.getElementById('64').checked) nbtab = 64; 
   else nbtab = 128;
-  for (var i = 0; i < nbtab; i++) {
+  for (let i = 0; i < nbtab; i++) {
     let arr = [];
     for (let y = 0; y < nbtab ; y++) {
       arr[y] = false;
@@ -66,11 +105,12 @@ function createtab(mylogictab) {
   }
   return mylogictab;
 }
-let isClicked = false;
+isClicked = false;
 btnread.addEventListener('click' , () => {
+  canClick = false;
   /* On stock le résultat de la fonction createtab dans une variable */
   if(!isClicked) {
-    setInterval(() => {
+    logicgame = setInterval(() => {
       map = createtab(mylogictab);
       map2 = [];
       for ( let x = 0 ; x < map.length ; x++) {
@@ -93,17 +133,13 @@ btnread.addEventListener('click' , () => {
           x++;
         }
       map = map2;
-      compt++
-      comptaffiche.innerHTML = compt
+      compt++;
+      comptaffiche.innerHTML = compt;
       ChangeDisplay();
     },50)
     isClicked = true;
   }
 });
-btnpause.addEventListener("click", () => {
-isClicked = true
-clearInterval(timerlogic);
-})
 function controlAround(x, y) {
   let celresult = 0;
   celresult += controlTopLane(x, y);
@@ -164,10 +200,16 @@ function ChangeDisplay (cell) {
     }
   }
 } 
+/* Fonction clearinterval / breakgame */
+btnpause.addEventListener("click", (e) => {
+    clearInterval(logicgame);
+    isClicked = false;
+    canClick = true;
+  });
 
 // rester appuyer sur la souris et modifier
 // A mettre au debut
-//var t0 = performance.now();
+//let t0 = performance.now();
 
 // A mettre à la fin
 //var t1 = performance.now();
