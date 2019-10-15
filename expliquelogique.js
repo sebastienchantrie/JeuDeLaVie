@@ -8,7 +8,28 @@ let map = [
   [false, false, false, false, false],
 ];
 let map2;
+/* On va crée une fonction qui imbriquera toute la logique de notre jeu et l'englober dans un set interval pour la relancer toute les
+secondes.
 
+On va définir une variable map2 qui sera vide par défaut
+Ensuite on va pushé une copie de toute les cases , une par une , dans map2
+
+Ensuite on va rentrer dans les boucles pour itéré le tableau
+et on va lancer la fonction controlAround qui prend en parametre X et Y
+
+ControlAround = Cette fonction va lancer 3 fonctions qui vont controler le nombre de case true en haut , au milieu et en bas et return
+le nombre de case true
+
+la variable celresult va s'incrémenté du nombre de céllule true renvoyé par ControlAround
+
+Ensuite on lance la fonction lookingForChangeState qui prend en arguments X y et celresult
+Cette fonction va appliquer les changements en fonction des régles du jeu de la vie
+
+Ensuite on va définir que map est égal a map2 pour l'affichage.
+
+Lorsque la fonction va se relancer , map2 va se vidé de nouveau et l'opération se relancera a l'infini
+
+*/
 setInterval(
 function gameLogic() {
   map2 = [];
